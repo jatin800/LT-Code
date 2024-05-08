@@ -21,3 +21,22 @@ function counter(n) {
   }
   return increament;
 }
+
+function expect(val) {
+  return {
+    toBe: (val2) => {
+      if (val === val2) return true;
+      else {
+        throw new Error("Not Equal");
+      }
+    },
+    notToBe: (val2) => {
+      if (val !== val2) return true;
+      else {
+        throw new Error("Equal");
+      }
+    },
+  };
+}
+
+console.log(expect(5).notToBe(5));
