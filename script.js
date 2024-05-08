@@ -22,21 +22,26 @@ function counter(n) {
   return increament;
 }
 
-function expect(val) {
+function expect(value) {
   return {
-    toBe: (val2) => {
-      if (val === val2) return true;
-      else {
-        throw new Error("Not Equal");
-      }
+    toBe: (value2) => {
+      if (value === value2) return true;
+      else throw new Error("Not Equal");
     },
-    notToBe: (val2) => {
-      if (val !== val2) return true;
-      else {
-        throw new Error("Equal");
-      }
+    notToBE: (value2) => {
+      if (value !== value2) return true;
+      else throw new Error("Equal");
     },
   };
 }
 
-console.log(expect(5).notToBe(5));
+try {
+  console.log(expect(5).toBe(5));
+} catch (error) {
+  console.log(error);
+}
+try {
+  console.log(expect(5).notToBE(7));
+} catch (error) {
+  console.log(error);
+}
