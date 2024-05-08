@@ -66,8 +66,23 @@ function createCounter(init) {
 }
 
 // Example usage:
-const counter = createCounter(5);
-console.log(counter.increment()); // Output: 6
-console.log(counter.increment()); // Output: 7
-console.log(counter.decrement()); // Output: 6
-console.log(counter.reset()); // Output: 5
+const counter1 = createCounter(5);
+console.log(counter1.increment()); // Output: 6
+console.log(counter1.increment()); // Output: 7
+console.log(counter1.decrement()); // Output: 6
+console.log(counter1.reset()); // Output: 5
+
+const arr = [1, 2, 3, 4, 5];
+const fn = (element, index) => element * index;
+console.log(transformArr(arr, fn));
+
+function transformArr(arr, fn) {
+  let returnArray = [];
+  for (let i = 0; i < arr.length; i++) {
+    returnArray.push(fn(arr[i], i));
+  }
+  return returnArray;
+}
+
+
+
