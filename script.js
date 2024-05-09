@@ -161,3 +161,25 @@ let fn3 = (a, b, c) => a + b + c;
 let result = once(fn3);
 console.log(result(1, 2, 3));
 console.log(result(1, 2, 3));
+
+function memoize(fn) {
+  let cache = {};
+  return (...args) => {
+    const key = JSON.stringify(args);
+    if (key in cache) {
+      return cache[key];
+    }
+    const result = fn.apply(this,args);
+    cache[key] = result;
+    return result;
+  };
+}
+
+const sum = (a, b) => a + b;
+
+let finalResult = memoize(sum);
+
+console.log(finalResult(1, 2));
+console.log(finalResult(1, 2));
+console.log(finalResult(1, 4));
+console.log(finalResult(1, 5));
