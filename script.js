@@ -193,3 +193,19 @@ let promise1 = new Promise((resolve) => setTimeout(() => resolve(2), 10));
 let promise2 = new Promise((resolve) => setTimeout(() => resolve(5), 20));
 
 console.log(addTwoPromise(promise1, promise2));
+
+const sleep = async (milis) => {
+  await new Promise((resolve) => setTimeout(resolve, milis));
+  console.log("hogya");
+  console.log("hogya");
+  console.log("hogya");
+  console.log("hogya");
+  console.log("hogya");
+  console.log("hogya");
+};
+
+let t = new Date();
+
+let promise = sleep(5000).then(() => console.log("Date.now() - t"));
+
+console.log(promise);
