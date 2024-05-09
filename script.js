@@ -133,3 +133,11 @@ let functions = [f, g, h];
 let composition = compose(functions);
 
 console.log(composition(4));
+
+function argumentsLength(...args) {
+  return args.length;
+}
+
+let c = argumentsLength(5,2,3,4,5,6);
+
+console.log(c);
