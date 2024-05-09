@@ -138,6 +138,26 @@ function argumentsLength(...args) {
   return args.length;
 }
 
-let c = argumentsLength(5,2,3,4,5,6);
+let c = argumentsLength(5, 2, 3, 4, 5, 6);
 
 console.log(c);
+
+function once(fn) {
+  let called = false;
+  let result;
+  return (...args) => {
+    if (!called) {
+      called = true;
+      result = fn(...args);
+      return result;
+    } else {
+      return undefined;
+    }
+  };
+}
+
+let fn3 = (a, b, c) => a + b + c;
+
+let result = once(fn3);
+console.log(result(1, 2, 3));
+console.log(result(1, 2, 3));
