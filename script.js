@@ -169,7 +169,7 @@ function memoize(fn) {
     if (key in cache) {
       return cache[key];
     }
-    const result = fn.apply(this,args);
+    const result = fn.apply(this, args);
     cache[key] = result;
     return result;
   };
@@ -183,3 +183,13 @@ console.log(finalResult(1, 2));
 console.log(finalResult(1, 2));
 console.log(finalResult(1, 4));
 console.log(finalResult(1, 5));
+
+const addTwoPromise = async (promise1, promise2) => {
+  const [val1, val2] = await Promise.all([promise1, promise2]);
+  return val1 + val2;
+};
+
+let promise1 = new Promise((resolve) => setTimeout(() => resolve(2), 10));
+let promise2 = new Promise((resolve) => setTimeout(() => resolve(5), 20));
+
+console.log(addTwoPromise(promise1, promise2));
