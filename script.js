@@ -84,5 +84,17 @@ function transformArr(arr, fn) {
   return returnArray;
 }
 
+function transformArr(arr, fn) {
+  let filteredArr = [];
+  for (let i = 0; i < arr.length; i++) {
+    if (fn(arr[i], i)) {
+      filteredArr.push(arr[i]);
+    }
+  }
+  return filteredArr;
+}
 
+let array = [1, 2, 3, 4];
+let fn1 = (element) => element !== 3;
 
+console.log(transformArr(array, fn1));
